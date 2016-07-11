@@ -15,6 +15,10 @@ type Episode struct {
 	AirDate *time.Time `json:"airstamp"`
 	Runtime int
 	Summary string
+	Image   struct {
+		Medium   string
+		Original string
+	}
 }
 
 // GetEpisodes finds all episodes for the given show
