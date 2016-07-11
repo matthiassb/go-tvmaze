@@ -23,17 +23,15 @@ type Show struct {
 	Genres    []string
 	Status    string
 	Runtime   int
-	Premiered Date
+	Premiered string
 	Summary   string
 	Network   network
-	Embeds    struct {
-		Episodes []Episode
-	} `json:"_embedded"`
-	Remotes map[string]*json.RawMessage `json:"externals"`
+	Remotes map[string]*json.RawMessage
 	Image   struct {
 		Medium   string
 		Original string
 	}
+	SeasonCount int
 }
 
 // GetTitle return the show title
@@ -51,13 +49,6 @@ func (s Show) GetNetwork() string {
 	return s.Network.Name
 }
 
-// GetFirstAired return the time the first episode was aired
-func (s Show) GetFirstAired() time.Time {
-	if s.Premiered.Valid {
-		return s.Premiered.Time
-	}
-	return time.Time{}
-}
 
 // GetMediumPoster returns the URL to a medium sized poster
 func (s Show) GetMediumPoster() string {
