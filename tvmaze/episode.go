@@ -19,6 +19,7 @@ type Episode struct {
 		Medium   string
 		Original string
 	}
+	Path string
 }
 
 // GetEpisodes finds all episodes for the given show
